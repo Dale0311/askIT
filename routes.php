@@ -1,5 +1,6 @@
 <?php 
 
 return [
-    "/" => "index.php"
+    "/" => "index.php",
+    "/notifications" => "notifications.php",
 ];

@@ -1,2 +1,3 @@
 <?php 
-require base_path("view/index.php");
+$curr_nav = "index";
+view("index", compact("curr_nav"));
