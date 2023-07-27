@@ -17,10 +17,10 @@ function routeToController($uri, $routes){
     }
 }
 function abort($code = 404){
-    return require base_path("view/{$code}.php");
+    return require base_path("view/{$code}.view.php");
 }
 
 function view($var, $data = []){
     extract($data);
-    return require base_path("view/{$var}.php");
+    return require base_path("view/{$var}.view.php");
 }
