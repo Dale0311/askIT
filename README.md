@@ -12,7 +12,9 @@
                 @construct - set the attribute for fetch to assoc.
             query($q, []) - accept query that is used to prepare a stmt, array that is used in stmt->execute
                 return: $this (the current object).
-#### TODO 07/27/2023: : 
+#### TODO 07/27/2023:
         1. create a router class that accepts crud HTTP_METHODS.
-        1. create a profile uri wherein i can view my questions.
-        1.1 @profile handle get method, post, put, delete
+        Update: done, To follow card @profile. #need a way to group profile img and name
+        2. create a profile wherein i can view my questions.
+        2.1 create authentication
+        2.2 @profile handle get method, post, put, delete

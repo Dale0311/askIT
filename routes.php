@@ -1,7 +1,5 @@
-<?php 
-
-return [
-    "/" => "index.php",
-    "/notifications" => "notifications.php",
-    "/profile" => "profile.php",
-];
+<?php
+ 
+$router->get("/", "index");
+$router->get("/notifications", "notifications");
+$router->get("/profile", "profile/index");
