@@ -1,3 +1,3 @@
 <?php 
 
-dd($_SERVER['REQUEST_METHOD']);
+dd($_GET['id']);

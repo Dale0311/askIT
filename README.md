@@ -13,8 +13,20 @@
             query($q, []) - accept query that is used to prepare a stmt, array that is used in stmt->execute
                 return: $this (the current object).
 #### TODO 07/27/2023:
-        1. create a router class that accepts crud HTTP_METHODS.
-        Update: done, To follow card @profile. #need a way to group profile img and name
-        2. create a profile wherein i can view my questions.
-        2.1 create authentication
-        2.2 @profile handle get method, post, put, delete
+    1. create a router class that accepts crud HTTP_METHODS.
+    Update: done, To follow card @profile. #need a way to group profile img and name
+    status - 200
+#### TODO 07/28/2023:
+    2. create a profile wherein i can view my questions.
+    2.1 @profile need to create a way to handle get, post, put, delete to questions.
+    
+    Update: 
+    1. created a helper functions
+        - json_decode [comment]
+        - date formatter
+        - twoDimentional to oneDimential arr
+    2. dynamic rendering @profile base on the data.
+    3. add column @users table joined_date
+
+    TODO: currently working on how to have a multiple a in 1 card.
+    

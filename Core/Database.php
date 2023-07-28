@@ -22,13 +22,21 @@ class Database{
         $this->stmt->execute($params);
         return $this;
     }
-
+    function rowCount(){
+        return $this->stmt->rowCount();
+    }
     function fetch(){
         $tempArr=[];
-        if($this->stmt->rowCount() > 0){
+        if($this->stmt->rowCount() >= 1){
             foreach ($this->stmt->fetchAll() as $row) {
                 $tempArr[] = $row;
             }
+        }
+        // elseif($this->stmt->rowCount() === 1){
+        //     $tempArr = $this->stmt->fetch();
+        // }
+        else{
+            $tempArr['message'] = "No record Found";
         }
         return $tempArr;
     }
