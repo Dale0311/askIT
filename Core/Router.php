@@ -36,6 +36,6 @@ class Router{
     }
 
     function abort($code = 404){
-        return require base_path("{$code}.php");
+        return require base_path("view/{$code}.view.php");
     }
 }

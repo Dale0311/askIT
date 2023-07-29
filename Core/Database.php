@@ -35,9 +35,6 @@ class Database{
         // elseif($this->stmt->rowCount() === 1){
         //     $tempArr = $this->stmt->fetch();
         // }
-        else{
-            $tempArr['message'] = "No record Found";
-        }
         return $tempArr;
     }
 }

@@ -51,7 +51,7 @@
             <!-- questions section -->
             <div class="border-t pt-5 w-full">
                 <?php foreach ($data as $row) : ?>
-                    <article class="rounded-xl border-2 border-gray-100 bg-white hover:bg-gray-100 cursor-pointer text-left" data-id="<?= $row['id'] ?>" id="showQuestion">
+                    <article class="rounded-xl border-2 border-gray-100 bg-white hover:bg-gray-100 cursor-pointer text-left">
                         <div class="flex items-start gap-4 p-4 cursor-pointer">
                             <a href="#" class="block shrink-0">
                                 <img alt="Speaker" src="<?= $row['profile_pic'] ?>" class="h-10 w-10 rounded-full object-cover" />

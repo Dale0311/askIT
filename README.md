@@ -28,5 +28,5 @@
     2. dynamic rendering @profile base on the data.
     3. add column @users table joined_date
 
-    TODO: currently working on how to have a multiple a in 1 card.
-    
+    07/29/2023 - still working on how to show 1 question
+    Update - comments are showing, working on when user post a comment. NOTE:links tbf

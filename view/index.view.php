@@ -9,7 +9,7 @@
             <form>
                 <div class="flex space-x-2 py-2 border-b border-t">
                     <a href="/notifications" class="block shrink-0">
-                        <img alt="Speaker" src="img/user1/1.jpg" class="h-10 w-10 rounded-full object-cover" />
+                        <img alt="Speaker" src="<?= $curr_user['profile_pic'] ?>" class="h-10 w-10 rounded-full object-cover" />
                     </a>
                     <div class="flex flex-col w-full">
                         <textarea name="" id="" class="resize-none pb-4 px-2 overflow-none focus:outline-none focus:border-none text-lg" placeholder="What is happening?!"></textarea>
@@ -18,13 +18,14 @@
                 </div>
             </form>
             <?php foreach ($data as $row) : ?>
-                <article class="rounded-xl border-2 border-gray-100 bg-white hover:bg-gray-100 cursor-pointer text-left" data-id="<?= $row['id'] ?>" id="showQuestion">
+                <article class="rounded-xl border-2 border-gray-100 bg-white hover:bg-gray-100 cursor-pointer text-left relative">
+                    <a href="/profile/questions?id=<?= $row['id'] ?>" class="absolute inset-0 "></a>
                     <div class="flex items-start gap-4 p-4 cursor-pointer">
-                        <a href="/profile" class="block shrink-0">
+                        <a href="/profile" class="block shrink-0 z-10">
                             <img alt="Speaker" src="<?= $row['profile_pic'] ?>" class="h-10 w-10 rounded-full object-cover" />
                         </a>
                         <div>
-                            <a href="/profile" class="block shrink-0">
+                            <a href="/profile" class="inline-block shrink-0 z-30">
                                 <p class="text-sm text-gray-500"><span class="font-semibold text-base text-gray-700"><?= $row['firstname'] . " " . $row['lastname'] ?></span> <?= $row['at'] ?></p>
                             </a>
                             <p class="line-clamp-2 text-sm text-gray-700">

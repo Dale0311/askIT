@@ -1,7 +1,7 @@
 <div class="flex h-screen flex-col justify-between border-e bg-white inset-y-0 left-0">
     <div class="px-4 py-6">
         <span class="grid h-10 w-32 place-content-center rounded-lg text-xs text-gray-600">
-            <img src="img/logo.png" alt="">
+            <img src="/img/logo.png" alt="logo">
         </span>
         <ul class="mt-10 space-y-1 text-lg">
             <li>
@@ -64,7 +64,7 @@
     </div>
     <div class="sticky inset-x-0 bottom-0 border-t border-gray-100">
         <a href="#" class="flex items-center gap-2 bg-white p-4 hover:bg-gray-50">
-            <img alt="Man" src="img/user1/1.jpg" class="h-12 w-12 rounded-full object-cover" />
+            <img alt="Man" src="/img/user1/profile.jpg" class="h-12 w-12 rounded-full object-cover" />
             <div class="w-full flex items-center justify-between">
                 <p class="text-lg flex flex-col justify-center">
                     <strong class="block font-medium">Dale Cabarle</strong>

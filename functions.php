@@ -18,6 +18,7 @@ function routeToController($uri, $routes){
 }
 function abort($code = 404){
     return require base_path("view/{$code}.view.php");
+    die();
 }
 
 function view($var, $data = []){
