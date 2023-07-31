@@ -1,4 +1,7 @@
-<?php 
+<?php
+
+use Core\Database;
+
 function dd($val){
     var_dump($val);
     die();
@@ -43,4 +46,18 @@ function dateFormatter($date){
 
 function toOneDArr($arr){
     return $arr[0];
+}
+
+function getQuestion(Database $db, int $id){
+    // question
+    $q = $q = "SELECT questions.*, users.at, users.firstname, users.lastname, users.profile_pic FROM questions LEFT JOIN users ON questions.user_id = users.user_id WHERE questions.id=?";
+
+    $data = $db->query($q, [$id])->fetch();
+    if(! $data){
+        abort(404);
+    }
+    $data = decodeComment($data);
+    $data = toOneDArr($data);
+
+    return $data;
 }

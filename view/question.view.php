@@ -21,15 +21,22 @@
                     </div>
                 </div>
                 <!-- write a comment -->
-                <form action="/profile/question">
+                <form action="/profile/questions" method="post">
                     <!-- TODO: create a post comment and interact with the db -->
                     <div class="sm:flex sm:items-center sm:gap-2 w-11/12 mx-auto border-t py-4 flex">
+                        <input type="hidden" name="at" value="<?= $curr_user['at'] ?>">
+                        <input type="hidden" name="profile_pic" value="<?= $curr_user['profile_pic'] ?>">
+                        <input type="hidden" name="firstname" value="<?= $curr_user['firstname'] ?>">
+                        <input type="hidden" name="lastname" value="<?= $curr_user['lastname'] ?>">
+                        <input type="hidden" name="question_id" value="<?= $data['id'] ?>">
+                        <input type="hidden" name="existing_comments" value="<?= $encoded ?>">
+                        
                         <a href="/profile" class="block shrink-0 z-10 self-start">
                             <img alt="Speaker" src="<?= $curr_user['profile_pic'] ?>" class="h-10 w-10 rounded-full object-cover" />
                         </a>
                         <textarea name="comment" class="w-full resize-none pb-4 px-2 overflow-none focus:outline-none focus:border-none text-lg" id="reply" placeholder="Post your reply..."></textarea>
 
-                        <button class="py-2 px-6 text-white bg-blue-500 rounded-xl font-semibold hover:bg-blue-600 hidden" id="replyBtn">Reply</button>
+                        <button class="py-2 px-6 text-white bg-blue-500 rounded-xl font-semibold enabled:hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-50" disabled id="replyBtn" type="submit">Reply</button>
                     </div>
                 </form>
                 <!-- comments -->

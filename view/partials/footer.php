@@ -1,18 +1,15 @@
 <script>
-    const reply = document.querySelector("#reply");
-    // event listener + timeout
-    reply.addEventListener("keyup", e=>{
-        setTimeout(() => {
-            
-        }, 500);
-        // $replyBtn = document.querySelector("#replyBtn");
-        // e.preventDefault();
-        // console.log(e.target.value.length);
-        // setTimeout()
-        // if(trim(e.target.value).length > 1){
 
-        //     $replyBtn.classList.toggle("hidden");
-        // }
+    // next update: if we revisit the page it shouldn't load the previous comment.
+    const reply = document.querySelector("#reply");
+    reply.addEventListener("keyup", e=>{
+        e.preventDefault();
+        $replyBtn = document.querySelector("#replyBtn");
+        if(e.target.value.trim().length > 0){
+            $replyBtn.removeAttribute("disabled");
+        }else{
+            $replyBtn.setAttribute("disabled", "disabled");
+        }
     })
 
 </script>

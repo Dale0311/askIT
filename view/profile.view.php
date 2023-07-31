@@ -12,13 +12,13 @@
                     <a href="/" class="hover:rounded-full hover:bg-gray-100 py-2 px-4 self-center mx-2"> <i class="fa-solid fa-arrow-left"></i> </a>
                     <div>
                         <p class="font-bold">
-                           <?= $user_data['firstname'] . " " . $user_data['lastname']?>
+                            <?= $user_data['firstname'] . " " . $user_data['lastname'] ?>
                         </p>
-                        <?php if(count($data)) : ?>
+                        <?php if (count($data)) : ?>
                             <p class="text-gray-500 text-sm">
-                                <?= count($data) ?> <?= count($data) > 1? "Questions" : "Question" ?> 
+                                <?= count($data) ?> <?= count($data) > 1 ? "Questions" : "Question" ?>
                             </p>
-                        <?php endif ?> 
+                        <?php endif ?>
                     </div>
                 </div>
                 <!-- bg -->
@@ -51,13 +51,14 @@
             <!-- questions section -->
             <div class="border-t pt-5 w-full">
                 <?php foreach ($data as $row) : ?>
-                    <article class="rounded-xl border-2 border-gray-100 bg-white hover:bg-gray-100 cursor-pointer text-left">
+                    <article class="rounded-xl border-2 border-gray-100 bg-white hover:bg-gray-100 cursor-pointer text-left relative">
+                        <a href="/profile/questions?id=<?= $row['id'] ?>" class="absolute inset-0 "></a>
                         <div class="flex items-start gap-4 p-4 cursor-pointer">
-                            <a href="#" class="block shrink-0">
+                            <a href="/profile" class="block shrink-0 z-10">
                                 <img alt="Speaker" src="<?= $row['profile_pic'] ?>" class="h-10 w-10 rounded-full object-cover" />
                             </a>
                             <div>
-                                <a href="#" class="block shrink-0">
+                                <a href="/profile" class="inline-block shrink-0 z-30">
                                     <p class="text-sm text-gray-500"><span class="font-semibold text-base text-gray-700"><?= $row['firstname'] . " " . $row['lastname'] ?></span> <?= $row['at'] ?></p>
                                 </a>
                                 <p class="line-clamp-2 text-sm text-gray-700">
@@ -73,14 +74,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="flex justify-end">
-                            <strong class="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl bg-green-600 px-3 py-1.5 text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                                </svg>
-                                <span class="text-[10px] font-medium sm:text-xs">Solved!</span>
-                            </strong>
-                        </div> -->
                     </article>
                 <?php endforeach ?>
             </div>
