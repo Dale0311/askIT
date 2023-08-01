@@ -1,12 +1,13 @@
 <?php
 
-use Core\Database;
-$config = require base_path("config.php");
+use Core\App;
 // kapag may auth nako
 $_SESSION['curr_user_id'] = 1;
 
 // Select * from questions
-$db = new Database($config['database']);
+// $config = require base_path("config.php");
+// $db = new Database($config['database']);
+$db = App::resolver("Database");
 $data = getQuestion($db);
 
 $qUser = "SELECT * FROM users WHERE user_id=?";

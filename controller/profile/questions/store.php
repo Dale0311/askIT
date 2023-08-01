@@ -6,7 +6,7 @@ $config = require base_path("config.php");
 $db = new Database($config['database']);
 $existing_comments = unserialize($_POST['existing_comments']);
 $comment_keys = array_keys($existing_comments[0]);
-$comment_value = [$_POST['at'], $_POST['profile_pic'], $_POST['firstname'], $_POST['lastname'], $_POST['comment']];
+$comment_value = [$_POST['at'], $_POST['profile_pic'], $_POST['firstname'], $_POST['lastname'], htmlspecialchars($_POST['comment'])];
 $newComment = array_combine($comment_keys, $comment_value);
 
 // add the new comment 
