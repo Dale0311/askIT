@@ -48,16 +48,16 @@ function toOneDArr($arr){
     return $arr[0];
 }
 
-function getQuestion(Database $db, int $id){
+function getQuestion(Database $db, int $id = null){
     // question
-    $q = $q = "SELECT questions.*, users.at, users.firstname, users.lastname, users.profile_pic FROM questions LEFT JOIN users ON questions.user_id = users.user_id WHERE questions.id=?";
+    $isSpecific = $id? "WHERE questions.id=?" : "";
+    $q = "SELECT questions.*, users.at, users.firstname, users.lastname, users.profile_pic FROM questions LEFT JOIN users ON questions.user_id = users.user_id {$isSpecific} ORDER BY id DESC";
 
-    $data = $db->query($q, [$id])->fetch();
+    $data = $db->query($q, $id? [$id] : [])->fetch();
     if(! $data){
         abort(404);
     }
     $data = decodeComment($data);
-    $data = toOneDArr($data);
 
     return $data;
 }

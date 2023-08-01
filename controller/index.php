@@ -6,10 +6,8 @@ $config = require base_path("config.php");
 $_SESSION['curr_user_id'] = 1;
 
 // Select * from questions
-$q = "SELECT questions.*, users.at, users.firstname, users.lastname, users.profile_pic FROM questions LEFT JOIN users ON questions.user_id = users.user_id";
 $db = new Database($config['database']);
-$data = $db->query($q)->fetch();
-$data = decodeComment($data);
+$data = getQuestion($db);
 
 $qUser = "SELECT * FROM users WHERE user_id=?";
 $_SESSION['curr_user_data'] = $db->query($qUser, [$_SESSION['curr_user_id']])->fetch();

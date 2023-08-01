@@ -16,7 +16,7 @@ $existing_comments[] = $newComment;
 $encoded_existing_comments = json_encode($existing_comments);
 
 // query the database
-$q = "UPDATE questions SET comments = '{$encoded_existing_comments}' WHERE questions.id = ?";
+$q = "UPDATE questions SET comments = '{$encoded_existing_comments}' WHERE id = ?";
 $inserted_comment = $db->query($q, [$_POST['question_id']]);
 if($inserted_comment){
     header("location: /profile/questions?id={$_POST['question_id']}");

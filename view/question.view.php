@@ -42,7 +42,7 @@
                 <!-- comments -->
                 <div class="sm:flex sm:items-center sm:gap-2 w-11/12 mx-auto border-t">
                     <ul class="mt-2">
-                        <?php foreach ($data['comments'] as $row):?>
+                        <?php foreach (array_reverse($data['comments']) as $row):?>
                             <li class="w-full py-2 flex items-start gap-4">
                                 <a href="/profile" class="block shrink-0 z-10">
                                     <img alt="Speaker" src="<?= $row['profile_pic'] ?>" class="h-10 w-10 rounded-full object-cover" />
