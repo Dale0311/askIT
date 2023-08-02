@@ -32,9 +32,15 @@ function view($var, $data = []){
 function decodeComment($record){
     foreach ($record as &$row) {
         if(array_key_exists("comments", $row)){
-            $comments = json_decode($row['comments'], true);
-            $row['comments'] = $comments;
+            if($row['comments']){
+                $comments = json_decode($row['comments'], true);
+                $row['comments'] = $comments;
+            }
+            else{
+                $row['comments'] = [];
+            }
         }
+
     }
     return $record;
 }
@@ -49,11 +55,29 @@ function toOneDArr($arr){
 }
 
 function getQuestion(Database $db, int $id = null){
-    // question
-    $isSpecific = $id? "WHERE questions.id=?" : "";
-    $q = "SELECT questions.*, users.at, users.firstname, users.lastname, users.profile_pic FROM questions LEFT JOIN users ON questions.user_id = users.user_id {$isSpecific} ORDER BY id DESC";
+    
+    // show specific question
+    $is_specific = $id? "WHERE questions.id=?" : "";
+
+    // query
+    $q = "SELECT questions.*, users.at, users.firstname, users.lastname, users.profile_pic FROM questions LEFT JOIN users ON questions.user_id = users.user_id {$is_specific} ORDER BY id DESC";
 
     $data = $db->query($q, $id? [$id] : [])->fetch();
+    if(! $data){
+        abort(404);
+    }
+    $data = decodeComment($data);
+
+    return $data;
+}
+
+function getUserQuestions(Database $db, int $user_id){
+
+    $q = "SELECT questions.*, users.at, users.firstname, users.lastname, users.profile_pic FROM questions LEFT JOIN users ON questions.user_id = users.user_id WHERE questions.user_id = ? ORDER BY id DESC";
+
+    $data = $db->query($q, [$user_id])->fetch();
+
+    // validation if there's a data
     if(! $data){
         abort(404);
     }

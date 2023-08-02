@@ -39,20 +39,32 @@
     create a way that the newest comment will be on the top of the post.
     Update - 5:02 pm: done, try to create a service container.
 
-    Update - 6:38pm : Done creating service container.
-    Try to create TODO - 08/02/2023"
-    To Implement: 
-        1. Comments should have a dedicated folder to perform crud
-        2. Comments should have an ID to easily perform crud
-        3. Performing question CRUD @profile>questions. 
-        NOTE: seperating crud for question and comment to increase readability.  
-
+    Update - 6:38pm: Done creating service container.
     
-    future update of question:
-        * if the user owned the post he/she can delete any comment or the post itself.
+    future update of comments:
         * Users can reply to a comment or like a comment
         * create a logic that does not show all comments at once i can do like a btn that load another 5 comments or something.
         * create a level of privacy, public - anyone, protected - friends, private - me or strictly to any of my friends. 
-        NOTE: not now.
+
 #### TODO 08/02/2023
     create a way for the user to create a question.
+        1. Comments should have a dedicated folder to perform crud
+        2. Comments should have an ID to easily perform crud
+        3. Performing question CRUD @profile>questions. 
+        NOTE: seperating crud for question and comment to increase readability.
+
+    Update 4:50pm : 
+        Created a folder for comment that can perform crud
+        User can now add question from profile and index
+        Created a fn that get all the questions of the user to display @profile>index.
+        
+    future update to question 
+        * If the user owned the post he/she can delete any comment or the post itself.
+        * need to have update and delete the question.
+
+#### TODO: 08/03/2023
+    create a authentication for where user can register or login an account.
+    perform hashing to password
+    form validation
+    prg design
+    middleware

@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <!-- write a comment -->
-                <form action="/profile/questions" method="post">
+                <form action="/profile/questions/comments" method="post">
                     <!-- TODO: create a post comment and interact with the db -->
                     <div class="sm:flex sm:items-center sm:gap-2 w-11/12 mx-auto border-t py-4 flex">
                         <input type="hidden" name="at" value="<?= $curr_user['at'] ?>">

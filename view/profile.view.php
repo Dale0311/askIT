@@ -47,11 +47,29 @@
                     </div>
                 </div>
             </div>
-
+            <form method="post" action="profile/questions">
+                <div class="flex space-x-2 p-2 border-t">
+                    <input type="hidden" name="user_id" value="<?= $user_data['user_id'] ?>">
+                    <a href="/notifications" class="block shrink-0">
+                        <img alt="Speaker" src="<?= $user_data['profile_pic'] ?>" class="h-10 w-10 rounded-full object-cover" />
+                    </a>
+                    <div class="flex flex-col w-full">
+                        <textarea name="question" id="" class="resize-none px-2 overflow-none focus:outline-none focus:border-none text-lg" placeholder="What is happening?!"></textarea>
+                        <button type="submit" class="self-end py-2 px-8 text-white font-semibold bg-blue-500 rounded-xl border">Ask</button>
+                    </div>
+                </div>
+            </form>
             <!-- questions section -->
-            <div class="border-t pt-5 w-full">
+            <div class="border-t w-full">
+                <div class="flex p-4 items-center">
+                    <?php if (count($data)) : ?>
+                        <p class="text-xl font-bold">
+                            <?= count($data) > 1 ? "Questions" : "Question" ?>
+                        </p>
+                    <?php endif ?>
+                </div>
                 <?php foreach ($data as $row) : ?>
-                    <article class="rounded-xl border-2 border-gray-100 bg-white hover:bg-gray-100 cursor-pointer text-left relative">
+                    <article class="border border-gray-100 bg-white hover:bg-gray-100 cursor-pointer text-left relative">
                         <a href="/profile/questions?id=<?= $row['id'] ?>" class="absolute inset-0 "></a>
                         <div class="flex items-start gap-4 p-4 cursor-pointer">
                             <a href="/profile" class="block shrink-0 z-10">
@@ -69,7 +87,9 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
                                         </svg>
-                                        <p class="text-xs"><?= count($row['comments']) ?> comments</p>
+
+                                        <!-- 0 = no, <2 = comment, >1 = comments -->
+                                        <p class="text-xs"><?= count($row['comments']) > 0 ? count($row['comments']) : "no" ?> <?= count($row['comments']) < 2 ? "comment" : "comments" ?></p>
                                     </div>
                                 </div>
                             </div>
