@@ -5,8 +5,6 @@ use Core\App;
 $_SESSION['curr_user_id'] = 1;
 
 // Select * from questions
-// $config = require base_path("config.php");
-// $db = new Database($config['database']);
 $db = App::resolver("Database");
 $data = getQuestion($db);
 

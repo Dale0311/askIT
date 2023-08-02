@@ -1,13 +1,12 @@
-<?php 
-use Core\Database;
+<?php
+
+use Core\App;
 
 
 if(!$_GET['id']?? false){
    header("location: /");
 }
-$config = require base_path("config.php");
-
-$db = new Database($config['database']);
+$db = App::resolver("Database");
 
 // // question
 $data = getQuestion($db, $_GET['id']);
