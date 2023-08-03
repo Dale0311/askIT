@@ -13,7 +13,7 @@
                         <img alt="Speaker" src="<?= $user_data['profile_pic'] ?>" class="h-10 w-10 rounded-full object-cover" />
                     </a>
                     <div class="flex flex-col w-full">
-                        <textarea name="question" id="" class="resize-none pb-4 px-2 overflow-none focus:outline-none focus:border-none text-lg" placeholder="What is happening?!"></textarea>
+                        <textarea name="question" id="" class="resize-none pb-4 px-2 overflow-none focus:outline-none focus:border-none text-lg border-none" placeholder="What is happening?!"></textarea>
                         <button type="submit" class="self-end py-2 px-8 text-white font-semibold bg-blue-500 rounded-xl border">Ask</button>
                     </div>
                 </div>

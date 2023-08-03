@@ -27,6 +27,7 @@ function abort($code = 404){
 function view($var, $data = []){
     extract($data);
     return require base_path("view/{$var}.view.php");
+    die();
 }
 
 function decodeComment($record){
