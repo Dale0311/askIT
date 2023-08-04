@@ -37,4 +37,7 @@ class Database{
         // }
         return $tempArr;
     }
+    function getLastInsertedID(){
+        return $this->pdo->lastInsertId();
+    }
 }

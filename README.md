@@ -68,3 +68,11 @@
     form validation
     prg design
     middleware
+
+    Update: created a register and login ui, logic tbf
+#### TODO: 08/04/2023
+    creating form validation and logic for register and login
+    updated the post max size.
+
+    to be continue create a dir+id of the user and rename the picture to profile_pic
+
