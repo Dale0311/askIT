@@ -9,7 +9,7 @@
             <article class="rounded-xl border-2 border-gray-100 bg-white text-left w-full">
                 <div class="flex items-start gap-4 p-4">
                     <a href="/profile" class="block shrink-0 z-10">
-                        <img alt="Speaker" src="<?= $data['profile_pic'] ?>" class="h-10 w-10 rounded-full object-cover" />
+                        <img alt="Speaker" src="<?= $data['profile_pic']?? "/img/default.jpg" ?>" class="h-10 w-10 rounded-full object-cover" />
                     </a>
                     <div>
                         <a href="/profile" class="inline-block shrink-0">
@@ -24,17 +24,17 @@
                 <form action="/profile/questions/comments" method="post">
                     <!-- TODO: create a post comment and interact with the db -->
                     <div class="sm:flex sm:items-center sm:gap-2 w-11/12 mx-auto border-t py-4 flex">
-                        <input type="hidden" name="at" value="<?= $curr_user['at'] ?>">
-                        <input type="hidden" name="profile_pic" value="<?= $curr_user['profile_pic'] ?>">
-                        <input type="hidden" name="firstname" value="<?= $curr_user['firstname'] ?>">
-                        <input type="hidden" name="lastname" value="<?= $curr_user['lastname'] ?>">
+                        <input type="hidden" name="at" value="<?= $user_data['at'] ?>">
+                        <input type="hidden" name="profile_pic" value="<?= $user_data['profile_pic'] ?>">
+                        <input type="hidden" name="firstname" value="<?= $user_data['firstname'] ?>">
+                        <input type="hidden" name="lastname" value="<?= $user_data['lastname'] ?>">
                         <input type="hidden" name="question_id" value="<?= $data['id'] ?>">
                         <input type="hidden" name="existing_comments" value="<?= $encoded ?>">
                         
                         <a href="/profile" class="block shrink-0 z-10 self-start">
-                            <img alt="Speaker" src="<?= $curr_user['profile_pic'] ?>" class="h-10 w-10 rounded-full object-cover" />
+                            <img alt="Speaker" src="<?= $user_data['profile_pic'] ?? "/img/default.jpg" ?>" class="h-10 w-10 rounded-full object-cover" />
                         </a>
-                        <textarea name="comment" class="w-full resize-none pb-4 px-2 overflow-none focus:outline-none focus:border-none text-lg" id="reply" placeholder="Post your reply..."></textarea>
+                        <textarea name="comment" class="w-full resize-none pb-4 px-2 overflow-none focus:outline-none focus:border-none text-lg border-none" id="reply" placeholder="Post your reply..."></textarea>
 
                         <button class="py-2 px-6 text-white bg-blue-500 rounded-xl font-semibold enabled:hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-50" disabled id="replyBtn" type="submit">Reply</button>
                     </div>
@@ -42,10 +42,14 @@
                 <!-- comments -->
                 <div class="sm:flex sm:items-center sm:gap-2 w-11/12 mx-auto border-t">
                     <ul class="mt-2">
-                        <?php foreach (array_reverse($data['comments']) as $row):?>
+                        <?php foreach (array_reverse($data['comments']?? []) as $row):?>
+                            <?php if(empty($row['profile_pic'])){
+                                $row['profile_pic'] = "/img/default.jpg";
+                            } 
+                            ?>
                             <li class="w-full py-2 flex items-start gap-4">
                                 <a href="/profile" class="block shrink-0 z-10">
-                                    <img alt="Speaker" src="<?= $row['profile_pic'] ?>" class="h-10 w-10 rounded-full object-cover" />
+                                    <img alt="Speaker" src="<?= $row['profile_pic'] ?? "/img/default.jpg" ?>" class="h-10 w-10 rounded-full object-cover" />
                                 </a>
                                 <div class="bg-[#F3F4F6] px-4 rounded-xl space-y-1 py-1 cursor-pointer hover:bg-gray-200">
                                     <a href="/profile" class="inline-block shrink-0">

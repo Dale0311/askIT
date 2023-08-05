@@ -68,23 +68,7 @@
         </div>
       </div>
 
-      <!-- 4. -->
-      <div class="pt-5 w-1/2">
-        <p class="text-xs text-gray-500">Upload your profile picture</p>
-        <label class="block">
-          <span class="sr-only">Choose profile photo</span>
-          <input type="file" name="profile_pic" class="block w-full text-sm text-gray-500
-            file:mr-4 file:py-2 file:px-4
-            file:rounded-md file:border-0
-            file:text-sm file:font-semibold
-            file:bg-blue-500 file:text-white
-            hover:file:bg-blue-600
-          " />
-        </label>
-        <p class="text-xs text-red-500"><?= $arrError['file']?? "" ?></p>
-        <p class="text-xs text-red-500"><?= $arrError['file_size']?? "" ?></p>
-        <p class="text-xs text-red-500"><?= $arrError['file_extension']?? "" ?></p>
-      </div>
+      
 
       <div class="flex justify-center pt-5">
         <button type="submit" class="rounded-lg bg-indigo-600 px-5 py-3 w-1/2 text-sm font-medium text-white">

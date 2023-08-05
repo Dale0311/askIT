@@ -31,15 +31,17 @@
                 Welcome Back!
             </h1>
 
-            <form action="" class="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
+            <form action="/login" method="post" class="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
                 <p class="text-center text-lg font-medium">Sign in to your account</p>
-
+                <?php if(! isset($arrError['at'])): ?>
+                    <p class="text-red-500 my-2"><?= $arrError['invalid']?? '' ?></p>
+                <?php endif ?>
                 <div>
-                    <label for="email" class="sr-only">Email</label>
+                    <label for="at" class="sr-only">at</label>
 
                     <div class="relative">
-                        <input type="email" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm" placeholder="Enter email" required />
-
+                        <input type="text" name="at" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm" placeholder="Enter At/@" value="<?= $arrError['inputted_at']?? '' ?>"/>
+                        <p class="text-xs text-red-500"><?= $arrError['at']?? "" ?></p>
                         <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
@@ -52,8 +54,8 @@
                     <label for="password" class="sr-only">Password</label>
 
                     <div class="relative">
-                        <input type="password" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm" placeholder="Enter password" required />
-
+                        <input type="password" name="password" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm" placeholder="Enter password" />
+                        <p class="text-xs text-red-500"><?= $arrError['password']?? "" ?></p>
                         <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />

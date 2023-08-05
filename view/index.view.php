@@ -10,7 +10,7 @@
                 <div class="flex space-x-2 p-2 border-b border-t">
                     <input type="hidden" name="user_id" value="<?= $user_data['user_id'] ?>">
                     <a href="/notifications" class="block shrink-0">
-                        <img alt="Speaker" src="<?= $user_data['profile_pic'] ?>" class="h-10 w-10 rounded-full object-cover" />
+                        <img alt="Speaker" src="<?= $user_data['profile_pic']?? "/img/default.jpg" ?>" class="h-10 w-10 rounded-full object-cover" />
                     </a>
                     <div class="flex flex-col w-full">
                         <textarea name="question" id="" class="resize-none pb-4 px-2 overflow-none focus:outline-none focus:border-none text-lg border-none" placeholder="What is happening?!"></textarea>
@@ -23,7 +23,7 @@
                     <a href="/profile/questions?id=<?= $row['id'] ?>" class="absolute inset-0 "></a>
                     <div class="flex items-start gap-4 p-4 cursor-pointer">
                         <a href="/profile" class="block shrink-0 z-10">
-                            <img alt="Speaker" src="<?= $row['profile_pic'] ?>" class="h-10 w-10 rounded-full object-cover" />
+                            <img alt="Speaker" src="<?= $row['profile_pic']?? "/img/default.jpg" ?>" class="h-10 w-10 rounded-full object-cover" />
                         </a>
                         <div>
                             <a href="/profile" class="inline-block shrink-0 z-30">
@@ -39,7 +39,7 @@
                                     </svg>
 
                                     <!-- 0 = no comment, 1 = comment, >1 = comments -->
-                                    <p class="text-xs"><?= count($row['comments']) > 0? count($row['comments']): "no" ?> <?= count($row['comments']) < 2? "comment" : "comments"?></p>
+                                    <p class="text-xs"><?= count($row['comments']?? []) > 0? count($row['comments']): "no" ?> <?= count($row['comments']?? []) < 2? "comment" : "comments"?></p>
                                 </div>
                             </div>
                         </div>

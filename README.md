@@ -76,3 +76,9 @@
 
     to be continue create a dir+id of the user and rename the picture to profile_pic
 
+#### TODO: 08/05/2023
+    Honestly i created so much that i forgot all about them XD
+    I kinda clean my code a bit, but still a lot of works to do.
+    user can now sign in sign out and create account
+
+    next todo - create a update profile picture, cause by default it is a the dafault fb profile.

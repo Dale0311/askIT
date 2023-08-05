@@ -62,18 +62,18 @@
             </li> -->
         </ul>
     </div>
-    <div class="sticky inset-x-0 bottom-0 border-t border-gray-100">
-        <a href="#" class="flex items-center gap-2 bg-white p-4 hover:bg-gray-50">
-            <img alt="Man" src="/img/user1/profile.jpg" class="h-12 w-12 rounded-full object-cover" />
-            <div class="w-full flex items-center justify-between">
-                <p class="text-lg flex flex-col justify-center">
-                    <strong class="block font-medium">Dale Cabarle</strong>
-                    <span class="text-sm"> @Arteezy_King </span>
-                </p>
-                <p class="font-bold text-gray-700">
-                    ...
-                </p>
-            </div>
-        </a>
+    <div class="sticky inset-x-0 bottom-0 border-t border-gray-100 flex space-x-2 my-2">
+        <img alt="Man" src="<?= $user_data['profile_pic']?? "/img/default.jpg" ?>" class="h-12 w-12 rounded-full object-cover" />
+        <div class="w-full flex items-center justify-between">
+            <p class="text-lg flex flex-col justify-center">
+                <strong class="block font-medium"><?= $user_data['firstname']. " " .$user_data['lastname']?></strong>
+                <span class="text-sm"> <?= $user_data['at'] ?> </span>
+            </p>
+            <p class="font-bold text-gray-700">
+                <a href="/logo-ut">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </a>
+            </p>
+        </div>
     </div>
 </div>

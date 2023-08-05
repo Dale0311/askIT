@@ -10,12 +10,15 @@ $db = App::resolver("Database");
 
 // // question
 $data = getQuestion($db, $_GET['id']);
+if(empty($data)){
+   abort();
+}
 $data = toOneDArr($data);
-$curr_user = toOneDArr($_SESSION['curr_user_data']);
+$user_data = toOneDArr($_SESSION['curr_user_data']);
 
-$isOwned = $data['user_id'] === $curr_user['user_id']? true: false;
+$isOwned = $data['user_id'] === $user_data['user_id']? true: false;
 $curr_nav = null;
 
-$existing_comments = serialize($data['comments']);
+$existing_comments = serialize($data['comments']?? []);
 $encoded=htmlentities($existing_comments);
-view("question", compact("data", "curr_nav", "isOwned", "curr_user", "encoded"));
+view("question", compact("data", "curr_nav", "isOwned", "user_data", "encoded"));

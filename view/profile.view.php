@@ -27,7 +27,7 @@
                 <div class="relative text-gray-500 space-y-2 px-4">
                     <!-- profile -->
                     <a href="/profile" class="block shrink-0 absolute left-8 top-[-80px]">
-                        <img alt="Speaker" src="<?= $user_data['profile_pic'] ?>" class="h-28 w-28 rounded-full object-cover border-4 border-white" />
+                        <img alt="Speaker" src="<?= $user_data['profile_pic']?? "/img/default.jpg" ?>" class="h-28 w-28 rounded-full object-cover border-4 border-white" />
                     </a>
                     <!-- edit profile -->
                     <div class="flex justify-end">
@@ -35,8 +35,8 @@
                     </div>
                     <!-- name -->
                     <div class="leading-[10px]">
-                        <p class="text-lg font-bold text-black">Albert Dale Cabarle</p>
-                        <p>@Arteezy_king</p>
+                        <p class="text-lg font-bold text-black"><?= $user_data['firstname']. " " . $user_data['lastname'] ?></p>
+                        <p><?= $user_data['at'] ?> </p>
                     </div>
                     <div>
                         <i class="fa-regular fa-calendar"></i> Joined <?= dateFormatter($user_data['joined_date']) ?>
@@ -51,11 +51,11 @@
                 <div class="flex space-x-2 p-2 border-t">
                     <input type="hidden" name="user_id" value="<?= $user_data['user_id'] ?>">
                     <a href="/notifications" class="block shrink-0">
-                        <img alt="Speaker" src="<?= $user_data['profile_pic'] ?>" class="h-10 w-10 rounded-full object-cover" />
+                        <img alt="Speaker" src="<?= $user_data['profile_pic']?? "/img/default.jpg" ?>" class="h-10 w-10 rounded-full object-cover" />
                     </a>
                     <div class="flex flex-col w-full">
-                        <textarea name="question" id="" class="resize-none px-2 overflow-none focus:outline-none focus:border-none text-lg" placeholder="What is happening?!"></textarea>
-                        <button type="submit" class="self-end py-2 px-8 text-white font-semibold bg-blue-500 rounded-xl border">Ask</button>
+                        <textarea name="question" id="" class="resize-none px-2 overflow-none focus:outline-none focus:border-none text-lg border-none active:border-red-500" placeholder="What is happening?!"></textarea>
+                        <button type="submit" class="self-end py-2 px-8 text-white font-semibold bg-blue-500 rounded-xl border mt-2">Ask</button>
                     </div>
                 </div>
             </form>
@@ -73,7 +73,7 @@
                         <a href="/profile/questions?id=<?= $row['id'] ?>" class="absolute inset-0 "></a>
                         <div class="flex items-start gap-4 p-4 cursor-pointer">
                             <a href="/profile" class="block shrink-0 z-10">
-                                <img alt="Speaker" src="<?= $row['profile_pic'] ?>" class="h-10 w-10 rounded-full object-cover" />
+                                <img alt="Speaker" src="<?= $row['profile_pic']?? "/img/default.jpg" ?>" class="h-10 w-10 rounded-full object-cover" />
                             </a>
                             <div>
                                 <a href="/profile" class="inline-block shrink-0 z-30">
@@ -89,7 +89,7 @@
                                         </svg>
 
                                         <!-- 0 = no, <2 = comment, >1 = comments -->
-                                        <p class="text-xs"><?= count($row['comments']) > 0 ? count($row['comments']) : "no" ?> <?= count($row['comments']) < 2 ? "comment" : "comments" ?></p>
+                                        <p class="text-xs"><?= count($row['comments']?? []) > 0 ? count($row['comments']) : "no" ?> <?= count($row['comments']?? []) < 2 ? "comment" : "comments" ?></p>
                                     </div>
                                 </div>
                             </div>
