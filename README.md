@@ -82,3 +82,10 @@
     user can now sign in sign out and create account
 
     next todo - create a update profile picture, cause by default it is a the dafault fb profile.
+
+#### TODO: 08/07/2023
+    create a update profile picture, cause by default it is a the dafault fb profile.
+    
+    update: done, 2:12pm;
+
+# To be continue....

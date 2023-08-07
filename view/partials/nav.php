@@ -70,7 +70,7 @@
                 <span class="text-sm"> <?= $user_data['at'] ?> </span>
             </p>
             <p class="font-bold text-gray-700">
-                <a href="/logo-ut">
+                <a href="/logout">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </a>
             </p>

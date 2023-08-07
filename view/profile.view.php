@@ -1,8 +1,68 @@
+<style>
+    dialog[open] {
+        animation: appear .15s cubic-bezier(0, 1.8, 1, 1.8);
+    }
+
+    dialog::backdrop {
+        background: linear-gradient(45deg, rgba(0, 0, 0, 0.5), rgba(54, 54, 54, 0.5));
+        backdrop-filter: blur(3px);
+    }
+
+
+    @keyframes appear {
+        from {
+            opacity: 0;
+            transform: translateX(-3rem);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+</style>
 <?php require base_path("view/partials/header.php"); ?>
 <div class="w-4/5 mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-4">
         <!-- nav -->
         <?php require base_path("view/partials/nav.php"); ?>
+
+        <!-- modal -->
+        <dialog id="myModal" class="h-auto w-11/12 w-1/4 md:w-1/3 p-5 bg-white rounded-md">
+
+            <div class="flex flex-col w-full h-auto ">
+                <div class="flex w-full h-auto justify-center items-center">
+                    <div class="flex w-10/12 h-auto py-3 justify-center items-center text-2xl font-bold">
+                        Modal Header
+                    </div>
+                    <div onclick="document.getElementById('myModal').close();" class="flex w-1/12 h-auto justify-center cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </div>
+                </div>
+                <!-- Modal Content-->
+                <form action="/profile" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="user_id" value="<?= $user_data['user_id'] ?>">
+                    <div class="flex flex-col w-full h-auto px-2 justify-center items-center rounded text-center text-gray-500">
+                        <div class="border-t w-full py-2 flex flex-col justify-center items-center">
+                            <p class="text-lg font-semibold self-start text-black">Profile Picture: </p>
+                            <img class="h-28 w-28 rounded-full object-cover border" src="<?= $user_data['profile_pic'] ?? "/img/default.jpg" ?>" alt="">
+                            <div class="pt-5 w-1/2" >
+                                <p class="text-xs text-gray-500 ">Upload your profile picture</p>
+                                <label class="block">
+                                    <span class="sr-only">Choose profile photo</span>
+                                    <input type="file" name="profile_pic" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600" required/>
+                                </label>
+                            </div>
+                            <button type="submit" class="self-end py-2 px-8 text-white font-semibold bg-blue-500 rounded-xl border hover:bg-blue-600 mt-2">Upload</button>
+                        </div>
+                        <!-- tbf -->
+                    </div>
+                </div>
+                </form>
+        </dialog>
 
         <!-- main -->
         <div class="lg:col-span-2 mt-5 space-y-4">
@@ -27,15 +87,15 @@
                 <div class="relative text-gray-500 space-y-2 px-4">
                     <!-- profile -->
                     <a href="/profile" class="block shrink-0 absolute left-8 top-[-80px]">
-                        <img alt="Speaker" src="<?= $user_data['profile_pic']?? "/img/default.jpg" ?>" class="h-28 w-28 rounded-full object-cover border-4 border-white" />
+                        <img alt="Speaker" src="<?= $user_data['profile_pic'] ?? "/img/default.jpg" ?>" class="h-28 w-28 rounded-full object-cover border-4 border-white" />
                     </a>
                     <!-- edit profile -->
-                    <div class="flex justify-end">
-                        <a href="" class="border rounded-xl py-2 px-8 font-semibold hover:bg-gray-100">Edit Profile</a>
+                    <div class="flex justify-end" id="editProfile">
+                        <button onclick="document.getElementById('myModal').showModal()" id="btn" class="border rounded-xl py-2 px-8 font-semibold hover:bg-gray-100">Edit Profile</button>
                     </div>
                     <!-- name -->
                     <div class="leading-[10px]">
-                        <p class="text-lg font-bold text-black"><?= $user_data['firstname']. " " . $user_data['lastname'] ?></p>
+                        <p class="text-lg font-bold text-black"><?= $user_data['firstname'] . " " . $user_data['lastname'] ?></p>
                         <p><?= $user_data['at'] ?> </p>
                     </div>
                     <div>
@@ -51,13 +111,14 @@
                 <div class="flex space-x-2 p-2 border-t">
                     <input type="hidden" name="user_id" value="<?= $user_data['user_id'] ?>">
                     <a href="/notifications" class="block shrink-0">
-                        <img alt="Speaker" src="<?= $user_data['profile_pic']?? "/img/default.jpg" ?>" class="h-10 w-10 rounded-full object-cover" />
+                        <img alt="Speaker" src="<?= $user_data['profile_pic'] ?? "/img/default.jpg" ?>" class="h-10 w-10 rounded-full object-cover" />
                     </a>
                     <div class="flex flex-col w-full">
                         <textarea name="question" id="" class="resize-none px-2 overflow-none focus:outline-none focus:border-none text-lg border-none active:border-red-500" placeholder="What is happening?!"></textarea>
-                        <button type="submit" class="self-end py-2 px-8 text-white font-semibold bg-blue-500 rounded-xl border mt-2">Ask</button>
+                        <button type="submit" class="self-end py-2 px-8 text-white font-semibold bg-blue-500 rounded-xl border hover:bg-blue-600 mt-2">Ask</button>
                     </div>
                 </div>
+                
             </form>
             <!-- questions section -->
             <div class="border-t w-full">
@@ -73,7 +134,7 @@
                         <a href="/profile/questions?id=<?= $row['id'] ?>" class="absolute inset-0 "></a>
                         <div class="flex items-start gap-4 p-4 cursor-pointer">
                             <a href="/profile" class="block shrink-0 z-10">
-                                <img alt="Speaker" src="<?= $row['profile_pic']?? "/img/default.jpg" ?>" class="h-10 w-10 rounded-full object-cover" />
+                                <img alt="Speaker" src="<?= $row['profile_pic'] ?? "/img/default.jpg" ?>" class="h-10 w-10 rounded-full object-cover" />
                             </a>
                             <div>
                                 <a href="/profile" class="inline-block shrink-0 z-30">
@@ -89,7 +150,7 @@
                                         </svg>
 
                                         <!-- 0 = no, <2 = comment, >1 = comments -->
-                                        <p class="text-xs"><?= count($row['comments']?? []) > 0 ? count($row['comments']) : "no" ?> <?= count($row['comments']?? []) < 2 ? "comment" : "comments" ?></p>
+                                        <p class="text-xs"><?= count($row['comments'] ?? []) > 0 ? count($row['comments']) : "no" ?> <?= count($row['comments'] ?? []) < 2 ? "comment" : "comments" ?></p>
                                     </div>
                                 </div>
                             </div>

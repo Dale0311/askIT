@@ -9,7 +9,7 @@
             <form method="post" action="profile/questions">
                 <div class="flex space-x-2 p-2 border-b border-t">
                     <input type="hidden" name="user_id" value="<?= $user_data['user_id'] ?>">
-                    <a href="/notifications" class="block shrink-0">
+                    <a href="/profile" class="block shrink-0">
                         <img alt="Speaker" src="<?= $user_data['profile_pic']?? "/img/default.jpg" ?>" class="h-10 w-10 rounded-full object-cover" />
                     </a>
                     <div class="flex flex-col w-full">
